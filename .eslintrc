@@ -16,7 +16,7 @@
   },
   "rules": {
     "import/first": 0,
-    "operator-linebreak": ["error", "after"],
+    "operator-linebreak": 0,
     "global-require": 0,
     "implicit-arrow-linebreak": 0,
     "react/prop-types": 0,
