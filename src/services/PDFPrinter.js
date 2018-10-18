@@ -41,7 +41,7 @@ class PDFPrinter {
 						`
 						<div>
 							<p>${el.symptoms}</p>
-							<p>${el.where}</p>
+							<p>${el.location}</p>
 							<p>${el.thoughts}</p>
 							<p>${moment(el.value).format('dddd DD-MM-YYYY HH:mm')}</p>
 							<br/>
