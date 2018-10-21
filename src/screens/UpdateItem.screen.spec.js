@@ -2,6 +2,11 @@ import React from 'react';
 import { Alert } from 'react-native';
 import NavigationTestUtils from 'react-navigation/NavigationTestUtils';
 import renderer from 'react-test-renderer';
+
+jest.mock('moment', () => () => ({
+	format: () => '2018–10–28T12:34:56+00:00'
+}));
+
 import UpdateItemScreen from './UpdateItem.screen';
 
 const item = { id: 'item' };
