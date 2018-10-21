@@ -80,7 +80,11 @@ class AddUpdateItem extends React.Component {
 		this.setState(prevState => ({
 			currentItem: {
 				...prevState.currentItem,
-				...{ date: moment(prevState.date).hours(hours).minutes(minutes) }
+				...{
+					date: moment(prevState.currentItem.date)
+						.hours(hours)
+						.minutes(minutes)
+				}
 			}
 		}));
 	}
