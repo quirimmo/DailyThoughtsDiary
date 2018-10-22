@@ -1,9 +1,12 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import LocalizedStrings from 'react-localization';
 import moment from 'moment';
 import { Text, View, Button } from 'react-native';
 import itemStyles from '../styles/item.styles';
 import globalStyles from '../styles/global.styles';
+
+const strings = getComponentStrings();
 
 class Item extends React.Component {
 	constructor(props) {
@@ -23,10 +26,16 @@ class Item extends React.Component {
 				</Text>
 				<View style={globalStyles.rowContainer}>
 					<View style={itemStyles.itemButtonsContainer}>
-						<Button title="Delete Item" onPress={this.onDeleteItem} />
+						<Button
+							title={strings.deleteItemButton}
+							onPress={this.onDeleteItem}
+						/>
 					</View>
 					<View style={itemStyles.itemButtonsContainer}>
-						<Button title="Update Item" onPress={this.onUpdateItem} />
+						<Button
+							title={strings.updateItemButton}
+							onPress={this.onUpdateItem}
+						/>
 					</View>
 				</View>
 			</View>
@@ -52,5 +61,18 @@ Item.propTypes = {
 	onDeleteItem: PropTypes.func.isRequired,
 	onUpdateItem: PropTypes.func.isRequired
 };
+
+function getComponentStrings() {
+	return new LocalizedStrings({
+		en: {
+			deleteItemButton: 'Delete Item',
+			updateItemButton: 'Update Item'
+		},
+		it: {
+			deleteItemButton: 'Rimuovi Elemento',
+			updateItemButton: 'Modifica Elemento'
+		}
+	});
+}
 
 export default Item;

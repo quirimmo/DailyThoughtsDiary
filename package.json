@@ -8,6 +8,7 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
+    "test-single-run": "node ./node_modules/jest/bin/jest.js",
     "test-coverage": "node ./node_modules/jest/bin/jest.js --coverage"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "react": "16.3.1",
+    "react-localization": "^1.0.13",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-native-elements": "^0.19.1",
     "react-navigation": "^2.16.0",

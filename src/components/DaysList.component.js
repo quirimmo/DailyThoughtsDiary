@@ -27,17 +27,24 @@ class DaysList extends React.Component {
 	}
 
 	getItem(item) {
-		return <Day day={item} onPressed={this.props.onDayPressed.bind(this, item)} />;
+		return (
+			<Day day={item} onPressed={this.props.onDayPressed.bind(this, item)} />
+		);
 	}
 
 	renderSeparator = () => <Divider style={globalStyles.standardDivider} />;
 }
 
 DaysList.propTypes = {
-	days: PropTypes.arrayOf(PropTypes.shape({
-		value: PropTypes.string.isRequired,
-		count: PropTypes.number.isRequired
-	})).isRequired,
+	days: PropTypes.oneOfType([
+		PropTypes.arrayOf(
+			PropTypes.shape({
+				value: PropTypes.string.isRequired,
+				count: PropTypes.number.isRequired
+			})
+		).isRequired,
+		PropTypes.object
+	]),
 	onDayPressed: PropTypes.func.isRequired
 };
 

@@ -5,8 +5,18 @@ import renderer from 'react-test-renderer';
 import DailyItemsList from '../models/DailyItemsList';
 
 const items = [
-	{ date: '2018–10–28T12:34:56+00:00' },
-	{ date: '2018–10–29T12:34:56+00:00' }
+	{
+		date: '2018–10–28T12:34:56+00:00',
+		symptoms: 'symptoms 1',
+		location: 'location 1',
+		thoughts: 'thoughts 1'
+	},
+	{
+		date: '2018–10–29T12:34:56+00:00',
+		symptoms: 'symptoms 2',
+		location: 'location 2',
+		thoughts: 'thoughts 2'
+	}
 ];
 const mockResetCounters = jest.fn(() => new DailyItemsList());
 const mockAddOrIncrementItem = jest.fn(() => new DailyItemsList());

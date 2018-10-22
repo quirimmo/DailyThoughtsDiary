@@ -1,10 +1,13 @@
 import moment from 'moment';
 import * as React from 'react';
+import LocalizedStrings from 'react-localization';
 import PropTypes from 'prop-types';
 import { View, Button } from 'react-native';
 import AddItemRow from './AddItemRow.component';
 import ItemTime from './ItemTime.component';
 import addItemScreenStyles from '../styles/add-item-screen.styles';
+
+const strings = getComponentStrings();
 
 class AddUpdateItem extends React.Component {
 	constructor(props) {
@@ -24,24 +27,24 @@ class AddUpdateItem extends React.Component {
 			<View>
 				<AddItemRow
 					value={this.state.currentItem.symptoms}
-					label="Symptoms:"
-					placeholder="Type symptoms..."
+					label={strings.symptomsLabel}
+					placeholder={strings.symptomsPlaceholder}
 					onChangeText={text => {
 						this.changeItemText('symptoms', text);
 					}}
 				/>
 				<AddItemRow
 					value={this.state.currentItem.location}
-					label="Location:"
-					placeholder="Type where you are..."
+					label={strings.locationLabel}
+					placeholder={strings.locationPlaceholder}
 					onChangeText={text => {
 						this.changeItemText('location', text);
 					}}
 				/>
 				<AddItemRow
 					value={this.state.currentItem.thoughts}
-					label="Thoughts:"
-					placeholder="Type thoughts..."
+					label={strings.thoughtsLabel}
+					placeholder={strings.thoughtsPlaceholder}
 					onChangeText={text => {
 						this.changeItemText('thoughts', text);
 					}}
@@ -105,5 +108,26 @@ AddUpdateItem.propTypes = {
 	buttonTitle: PropTypes.string.isRequired,
 	onSubmitItem: PropTypes.func.isRequired
 };
+
+function getComponentStrings() {
+	return new LocalizedStrings({
+		en: {
+			symptomsLabel: 'Symptoms:',
+			locationLabel: 'Location:',
+			thoughtsLabel: 'Thoughts:',
+			symptomsPlaceholder: 'Type symptoms...',
+			locationPlaceholder: 'Type where you are...',
+			thoughtsPlaceholder: 'Type thoughts...'
+		},
+		it: {
+			symptomsLabel: 'Sintomi:',
+			locationLabel: 'Luogo:',
+			thoughtsLabel: 'Pensieri:',
+			symptomsPlaceholder: 'Inserisci i sintomi...',
+			locationPlaceholder: 'Inserisci dove ti trovi...',
+			thoughtsPlaceholder: 'Inserisci i pensieri...'
+		}
+	});
+}
 
 export default AddUpdateItem;

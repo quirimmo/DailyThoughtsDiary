@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LocalizedStrings from 'react-localization';
 import { Alert, View } from 'react-native';
 import { Divider } from 'react-native-elements';
 import globalStyles from '../styles/global.styles';
@@ -8,9 +9,11 @@ import PrintPDFButton from '../components/PrintPDFButton.component';
 import DaysList from '../components/DaysList.component';
 import DailyItemsList from '../models/DailyItemsList';
 
+const strings = getComponentStrings();
+
 class ViewDaysScreen extends React.Component {
 	static navigationOptions = {
-		title: 'View Days'
+		title: strings.title
 	};
 
 	constructor(props) {
@@ -76,8 +79,19 @@ ViewDaysScreen.propTypes = {
 			thoughts: PropTypes.string,
 			date: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 		})
-	).isRequired,
+	),
 	fetchItems: PropTypes.func.isRequired
 };
+
+function getComponentStrings() {
+	return new LocalizedStrings({
+		en: {
+			title: 'View Days'
+		},
+		it: {
+			title: 'Visualizza Giorni'
+		}
+	});
+}
 
 export default ViewDaysScreen;

@@ -14,6 +14,7 @@ const mockGetParam = jest.fn(() => item);
 const navigation = {
 	getParam: mockGetParam
 };
+const mockUpdateItem = jest.fn();
 let component;
 
 describe('UpdateItemScreen', () => {
@@ -21,7 +22,9 @@ describe('UpdateItemScreen', () => {
 		jest.useFakeTimers();
 		NavigationTestUtils.resetInternalState();
 		jest.clearAllMocks();
-		component = renderer.create(<UpdateItemScreen navigation={navigation} />);
+		component = renderer.create(
+			<UpdateItemScreen navigation={navigation} updateItem={mockUpdateItem} />
+		);
 	});
 	afterEach(() => {
 		jest.clearAllMocks();
@@ -55,7 +58,12 @@ describe('UpdateItemScreen', () => {
 			beforeEach(() => {
 				mockItemProp = jest.fn(() => 'item updated correctly');
 				instance = renderer
-					.create(<UpdateItemScreen navigation={navigation} updateItem={mockItemProp} />)
+					.create(
+						<UpdateItemScreen
+							navigation={navigation}
+							updateItem={mockItemProp}
+						/>
+					)
 					.getInstance();
 			});
 			it('should call the addItem prop', async () => {
@@ -76,7 +84,12 @@ describe('UpdateItemScreen', () => {
 					throw new Error('error updating the item');
 				});
 				instance = renderer
-					.create(<UpdateItemScreen navigation={navigation} updateItem={mockItemProp} />)
+					.create(
+						<UpdateItemScreen
+							navigation={navigation}
+							updateItem={mockItemProp}
+						/>
+					)
 					.getInstance();
 			});
 			it('should call the addItem prop', async () => {

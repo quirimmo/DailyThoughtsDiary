@@ -9,6 +9,8 @@ jest.mock('moment', () => () => ({
 
 import AddItemScreen from './AddItem.screen';
 
+const mockAddItem = jest.fn();
+
 describe('AddItemScreen', () => {
 	beforeEach(() => {
 		jest.useFakeTimers();
@@ -20,14 +22,14 @@ describe('AddItemScreen', () => {
 	});
 
 	it('should render the component', async () => {
-		const component = renderer.create(<AddItemScreen />).toJSON();
+		const component = renderer.create(<AddItemScreen addItem={mockAddItem} />).toJSON();
 		expect(component).toMatchSnapshot();
 	});
 
 	describe('state', () => {
 		let instance;
 		beforeEach(() => {
-			instance = renderer.create(<AddItemScreen />).getInstance();
+			instance = renderer.create(<AddItemScreen addItem={mockAddItem} />).getInstance();
 		});
 
 		describe('currentItem', () => {

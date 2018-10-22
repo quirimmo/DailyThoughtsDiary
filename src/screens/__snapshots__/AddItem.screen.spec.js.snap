@@ -273,7 +273,7 @@ exports[`AddItemScreen should render the component 1`] = `
               ]
             }
           >
-            Add Item
+            Save Item
           </Text>
         </View>
       </View>
