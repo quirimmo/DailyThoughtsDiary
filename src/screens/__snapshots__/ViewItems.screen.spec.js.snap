@@ -62,7 +62,7 @@ exports[`ViewItemsScreen should render the component 1`] = `
             ]
           }
         >
-          Save All As PDF
+          Save As PDF
         </Text>
       </View>
     </View>

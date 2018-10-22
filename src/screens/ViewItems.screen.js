@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LocalizedStrings from 'react-localization';
 import { View, Alert } from 'react-native';
 import { Divider } from 'react-native-elements';
 import globalStyles from '../styles/global.styles';
@@ -7,9 +8,11 @@ import PDFPrinter from '../services/PDFPrinter';
 import PrintPDFButton from '../components/PrintPDFButton.component';
 import ItemsList from '../components/ItemsList.component';
 
+const strings = getComponentStrings();
+
 class ViewItemsScreen extends React.Component {
 	static navigationOptions = {
-		title: 'View Items'
+		title: strings.title
 	};
 
 	constructor(props) {
@@ -63,5 +66,16 @@ ViewItemsScreen.propTypes = {
 	).isRequired,
 	deleteItem: PropTypes.func.isRequired
 };
+
+function getComponentStrings() {
+	return new LocalizedStrings({
+		en: {
+			title: 'View Items'
+		},
+		it: {
+			title: 'Visualizza Elementi'
+		}
+	});
+}
 
 export default ViewItemsScreen;

@@ -1,9 +1,12 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import LocalizedStrings from 'react-localization';
 import moment from 'moment';
 import { Text, View, Button, TimePickerAndroid } from 'react-native';
 import GlobalStyles from '../styles/global.styles';
 import ItemTimeStyles from '../styles/item-time.styles';
+
+const strings = getComponentStrings();
 
 class ItemTime extends React.Component {
 	constructor(props) {
@@ -22,7 +25,10 @@ class ItemTime extends React.Component {
 						</Text>
 					</View>
 					<View style={ItemTimeStyles.changeTimeButtonContainer}>
-						<Button title="Change Time" onPress={this.onSettingTime} />
+						<Button
+							title={strings.changeTimeButton}
+							onPress={this.onSettingTime}
+						/>
 					</View>
 				</View>
 			</React.Fragment>
@@ -48,5 +54,16 @@ ItemTime.propTypes = {
 	date: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 	onSetTime: PropTypes.func.isRequired
 };
+
+function getComponentStrings() {
+	return new LocalizedStrings({
+		en: {
+			changeTimeButton: 'Change Time'
+		},
+		it: {
+			changeTimeButton: 'Modifica Orario'
+		}
+	});
+}
 
 export default ItemTime;
