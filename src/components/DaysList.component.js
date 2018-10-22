@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView, FlatList } from 'react-native';
 import { Divider } from 'react-native-elements';
 import Day from './Day.component';
@@ -31,5 +32,13 @@ class DaysList extends React.Component {
 
 	renderSeparator = () => <Divider style={globalStyles.standardDivider} />;
 }
+
+DaysList.propTypes = {
+	days: PropTypes.arrayOf(PropTypes.shape({
+		value: PropTypes.string.isRequired,
+		count: PropTypes.number.isRequired
+	})).isRequired,
+	onDayPressed: PropTypes.func.isRequired
+};
 
 export default DaysList;

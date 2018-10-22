@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'expo';
 import Colors from '../styles/colors.styles';
 
-export default class TabBarIcon extends React.Component {
+class TabBarIcon extends React.Component {
 	render() {
 		return (
 			<Icon.Ionicons
@@ -15,3 +16,10 @@ export default class TabBarIcon extends React.Component {
 		);
 	}
 }
+
+TabBarIcon.propTypes = {
+	focused: PropTypes.bool.isRequired,
+	name: PropTypes.string.isRequired
+};
+
+export default TabBarIcon;

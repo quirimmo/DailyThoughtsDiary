@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Alert, View } from 'react-native';
 import { Divider } from 'react-native-elements';
 import globalStyles from '../styles/global.styles';
@@ -7,7 +8,7 @@ import PrintPDFButton from '../components/PrintPDFButton.component';
 import DaysList from '../components/DaysList.component';
 import DailyItemsList from '../models/DailyItemsList';
 
-export default class ViewDaysScreen extends React.Component {
+class ViewDaysScreen extends React.Component {
 	static navigationOptions = {
 		title: 'View Days'
 	};
@@ -66,3 +67,17 @@ export default class ViewDaysScreen extends React.Component {
 		});
 	}
 }
+
+ViewDaysScreen.propTypes = {
+	items: PropTypes.arrayOf(
+		PropTypes.shape({
+			symptoms: PropTypes.string,
+			location: PropTypes.string,
+			thoughts: PropTypes.string,
+			date: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+		})
+	).isRequired,
+	fetchItems: PropTypes.func.isRequired
+};
+
+export default ViewDaysScreen;

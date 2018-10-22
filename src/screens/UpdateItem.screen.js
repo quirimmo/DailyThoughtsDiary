@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Alert } from 'react-native';
 import globalStyles from '../styles/global.styles';
 import AddUpdateItem from '../components/AddUpdateItem.component';
 
-export default class UpdateItemScreen extends React.Component {
+class UpdateItemScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Update Item'
 	};
@@ -40,3 +41,9 @@ export default class UpdateItemScreen extends React.Component {
 		}
 	}
 }
+
+UpdateItemScreen.propTypes = {
+	updateItem: PropTypes.func.isRequired
+};
+
+export default UpdateItemScreen;
