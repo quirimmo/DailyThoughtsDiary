@@ -46,8 +46,7 @@ export default class ViewDaysScreen extends React.Component {
 			await this.props.fetchItems();
 			this.props.items.forEach(onEachItem.bind(this));
 		} catch (error) {
-			console.error(`Error fetching the items ${error}`);
-			Alert.alert('Error fetching the items');
+			Alert.alert(`Error fetching the items ${error}`);
 		}
 
 		function onEachItem(item) {

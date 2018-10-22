@@ -12,7 +12,7 @@ class ItemsDAO {
 	static async addItem(item) {
 		return new Promise(async (resolve, reject) => {
 			try {
-				ItemsDAO.sqliteProxy.executeTransaction(getTransition(resolve, reject));
+				await ItemsDAO.sqliteProxy.executeTransaction(getTransition(resolve, reject));
 			} catch (error) {
 				reject(
 					new Error(
@@ -41,7 +41,7 @@ class ItemsDAO {
 	static async deleteItem(item) {
 		return new Promise(async (resolve, reject) => {
 			try {
-				ItemsDAO.sqliteProxy.executeTransaction(getTransition(resolve, reject));
+				await ItemsDAO.sqliteProxy.executeTransaction(getTransition(resolve, reject));
 			} catch (error) {
 				reject(
 					new Error(
