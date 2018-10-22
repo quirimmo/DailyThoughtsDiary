@@ -56,7 +56,7 @@ Item.propTypes = {
 		symptoms: PropTypes.string,
 		location: PropTypes.string,
 		thoughts: PropTypes.string,
-		date: PropTypes.string
+		date: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 	}).isRequired,
 	onDeleteItem: PropTypes.func.isRequired,
 	onUpdateItem: PropTypes.func.isRequired
