@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Text, View, Button, TimePickerAndroid } from 'react-native';
 import GlobalStyles from '../styles/global.styles';
@@ -42,5 +43,10 @@ class ItemTime extends React.Component {
 		}
 	}
 }
+
+ItemTime.propTypes = {
+	date: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+	onSetTime: PropTypes.func.isRequired
+};
 
 export default ItemTime;

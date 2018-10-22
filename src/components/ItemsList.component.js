@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView, FlatList } from 'react-native';
 import { Divider } from 'react-native-elements';
 import Item from './Item.component';
@@ -46,5 +47,18 @@ class ItemsList extends React.Component {
 
 	renderSeparator = () => <Divider style={globalStyles.standardDivider} />;
 }
+
+ItemsList.propTypes = {
+	items: PropTypes.arrayOf(
+		PropTypes.shape({
+			symptoms: PropTypes.string,
+			location: PropTypes.string,
+			thoughts: PropTypes.string,
+			date: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+		})
+	).isRequired,
+	onDeleteItem: PropTypes.func.isRequired,
+	onUpdateItem: PropTypes.func.isRequired
+};
 
 export default ItemsList;

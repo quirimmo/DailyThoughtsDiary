@@ -1,5 +1,6 @@
 import moment from 'moment';
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { View, Button } from 'react-native';
 import AddItemRow from './AddItemRow.component';
 import ItemTime from './ItemTime.component';
@@ -93,5 +94,16 @@ class AddUpdateItem extends React.Component {
 		this.props.onSubmitItem(this.state.currentItem);
 	}
 }
+
+AddUpdateItem.propTypes = {
+	currentItem: PropTypes.shape({
+		symptoms: PropTypes.string,
+		location: PropTypes.string,
+		thoughts: PropTypes.string,
+		date: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+	}).isRequired,
+	buttonTitle: PropTypes.string.isRequired,
+	onSubmitItem: PropTypes.func.isRequired
+};
 
 export default AddUpdateItem;

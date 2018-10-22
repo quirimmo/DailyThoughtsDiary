@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Text, View, Button } from 'react-native';
 import itemStyles from '../styles/item.styles';
@@ -40,5 +41,16 @@ class Item extends React.Component {
 		this.props.onUpdateItem(this.props.item);
 	}
 }
+
+Item.propTypes = {
+	item: PropTypes.shape({
+		symptoms: PropTypes.string,
+		location: PropTypes.string,
+		thoughts: PropTypes.string,
+		date: PropTypes.string
+	}).isRequired,
+	onDeleteItem: PropTypes.func.isRequired,
+	onUpdateItem: PropTypes.func.isRequired
+};
 
 export default Item;

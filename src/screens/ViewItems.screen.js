@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Alert } from 'react-native';
 import { Divider } from 'react-native-elements';
 import globalStyles from '../styles/global.styles';
@@ -6,7 +7,7 @@ import PDFPrinter from '../services/PDFPrinter';
 import PrintPDFButton from '../components/PrintPDFButton.component';
 import ItemsList from '../components/ItemsList.component';
 
-export default class ViewItemsScreen extends React.Component {
+class ViewItemsScreen extends React.Component {
 	static navigationOptions = {
 		title: 'View Items'
 	};
@@ -50,3 +51,17 @@ export default class ViewItemsScreen extends React.Component {
 		this.props.navigation.navigate('UpdateItem', { item });
 	}
 }
+
+ViewItemsScreen.propTypes = {
+	items: PropTypes.arrayOf(
+		PropTypes.shape({
+			symptoms: PropTypes.string,
+			location: PropTypes.string,
+			thoughts: PropTypes.string,
+			date: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+		})
+	).isRequired,
+	deleteItem: PropTypes.func.isRequired
+};
+
+export default ViewItemsScreen;
